@@ -1,6 +1,6 @@
 {
   "name": "@xiaoluxiaolu/react-scrollload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react function component,achieve scrollload through IntersectionObserver",
   "main": "index.js",
   "scripts": {
