@@ -82,7 +82,7 @@ _Please use the useCallback to avoid triggering re-render_
 
 ### option(optional) \| type: {root:HTMLElement,rootMargin:string,threshold: number} \| defaultValue： {}
 
-一个可以用来配置 observer 实例的对象,参考：[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver/IntersectionObserver)
+一个可以用来配置 observer 实例的对象,参考：[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver/IntersectionObserver){:target="\_blank"}
 
 _An optional object which customizes the observe,reference:[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver/IntersectionObserver)_
 
