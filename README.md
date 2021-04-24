@@ -25,18 +25,12 @@ npm install --save @xiaoluxiaolu/react-scrollload
 ---
 
 ```javascript
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useMemo, useCallback } from 'react';
 import { render } from 'react-dom';
 import Scrollload from '@xiaoluxiaolu/react-scrollload';
 
 const Example = () => {
-  const [container, setContainer] = useState();
   const [list, setList] = useState([]);
-  const wrapperRef = useRef();
-
-  useEffect(() => {
-    setContainer(wrapperRef.current);
-  }, []);
 
   const loadMoreFun = useCallback(() => {
     setList((oldList) => oldList.concat(Array.from({ length: 10 })));
@@ -46,12 +40,14 @@ const Example = () => {
     // }
   }, []);
 
+  const option = useMemo(() => ({}), []);
+
   return (
-    <ul ref={wrapperRef}>
+    <ul>
       {list.map((item, index) => (
         <li key={index}>item-{index + 1}</li>
       ))}
-      <Scrollload container={container} loadMoreFun={loadMoreFun} />
+      <Scrollload loadMoreFun={loadMoreFun} option={option} />
     </ul>
   );
 };
@@ -61,10 +57,32 @@ render(<App />, document.getElementById('root'));
 
 ## Props
 
-### container(required)
+### loadMoreFun(required) defaultValue： -
 
-### loadMoreFun(required)
+当加载触发时，执行的回调。
 
-### option
+_The callback that is executed when the load is triggered._
 
-### loadingContent
+当需要停止继续加载数据时，在这个 function 中 return false 即可。
+
+_When it is time to stop loading data, return false in this function._
+
+如果传入，请使用 useCallback 包裹，以免触发 re-render
+
+_If passed in, use the useCallback package to avoid triggering re-render_
+
+### option(optional) type: {root:HTMLElement,rootMargin:string,threshold: number} defaultValue： {}
+
+一个可以用来配置 observer 实例的对象,参考：[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver/IntersectionObserver)
+
+_An optional object which customizes the observe,reference:[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver/IntersectionObserver)_
+
+如果传入，请使用 useMemo 包裹，以免触发 re-render
+
+_If passed in, use the useMemo package to avoid triggering re-render_
+
+### loadingContent(optional) type: ReactNode defaultValue： 'loading...'
+
+被监听元素的内容
+
+_The contents of the element being listened on_

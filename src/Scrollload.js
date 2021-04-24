@@ -8,9 +8,9 @@ const ScrollLoad = ({ option, loadMoreFun, loadingContent }) => {
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
-        console.log('entries: ', entries);
+        const entry = entries.find((item) => item.target === spinRef.current);
         // 如果不可见，就不再请求数据
-        if (!entries[0].isIntersecting) {
+        if (!entry || !entry.isIntersecting) {
           return;
         }
         if (typeof loadMoreFun === 'function') {
@@ -46,7 +46,7 @@ const ScrollLoad = ({ option, loadMoreFun, loadingContent }) => {
 
 ScrollLoad.defaultProps = {
   option: {},
-  loadingContent: '加载中...'
+  loadingContent: 'loading...'
 };
 
 export default ScrollLoad;
