@@ -57,7 +57,7 @@ render(<App />, document.getElementById('root'));
 
 ## Props
 
-### loadMoreFun(required) defaultValue： -
+### loadMoreFun(required) \| defaultValue： -
 
 当加载触发时，执行的回调。
 
@@ -71,7 +71,7 @@ _When it is time to stop loading data, return false in this function._
 
 _Please use the useCallback to avoid triggering re-render_
 
-### option(optional) type: {root:HTMLElement,rootMargin:string,threshold: number} defaultValue： {}
+### option(optional) \| type: {root:HTMLElement,rootMargin:string,threshold: number} \| defaultValue： {}
 
 一个可以用来配置 observer 实例的对象,参考：[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver/IntersectionObserver)
 
@@ -81,7 +81,7 @@ _An optional object which customizes the observe,reference:[MDN](https://develop
 
 _If passed in, use the useMemo to avoid triggering re-render_
 
-### loadingContent(optional) type: ReactNode defaultValue： 'loading...'
+### loadingContent(optional) \| type: ReactNode \| defaultValue： 'loading...'
 
 被监听元素的内容
 
