@@ -16,16 +16,21 @@ const ScrollLoad = ({ option, loadMoreFun, loadingContent }) => {
         if (typeof loadMoreFun === 'function') {
           // 请求数据前停止观察，请求结束时再更具数据结果，看是否要继续监听
           io.unobserve(spinRef.current);
-          Promise.resolve(loadMoreFun()).then((stop) => {
-            toggleStop(!!stop);
-            if (stop) {
+          Promise.resolve(loadMoreFun())
+            .then((stop) => {
+              toggleStop(!!stop);
+              if (stop) {
+                // 关闭观察器
+                io.disconnect();
+              } else {
+                // 继续开启观察
+                io.observe(spinRef.current);
+              }
+            })
+            .catch(() => {
               // 关闭观察器
               io.disconnect();
-            } else {
-              // 继续开启观察
-              io.observe(spinRef.current);
-            }
-          });
+            });
         }
       },
       { ...option }

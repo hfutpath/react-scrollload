@@ -66,15 +66,15 @@ render(<App />, document.getElementById('root'));
 
 ## Props
 
-### loadMoreFun(required) \| defaultValue： -
+### loadMoreFun(required) \| type: () => boolean | Promise<boolean> \| defaultValue： -
 
 当加载触发时，执行的回调。
 
 _The callback that is executed when the load is triggered._
 
-当需要停止继续加载数据时，在这个 function 中 return false 即可。
+当需要停止继续加载数据时，在这个 function 中 return false 即可，支持返回一个 Promise 对象，Promise 对象 reject 时或 resolve 时且 value 为 false 则停止继续加载数据。
 
-_When it is time to stop loading data, return false in this function._
+_Loading will be stopped with false or a resolved Promise with value false or a rejected Promise returned_
 
 请使用 useCallback 包裹，以免触发 re-render
 
