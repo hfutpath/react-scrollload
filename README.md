@@ -25,7 +25,7 @@ npm install --save @xiaoluxiaolu/react-scrollload
 ---
 
 ```javascript
-import React, { useRef, useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { render } from 'react-dom';
 import Scrollload from '@xiaoluxiaolu/react-scrollload';
 
@@ -43,9 +43,18 @@ const Example = () => {
   const option = useMemo(() => ({}), []);
 
   return (
-    <ul>
+    <ul
+      style={{
+        border: '1px solid #333',
+        height: 400,
+        width: 200,
+        overflowY: 'auto'
+      }}
+    >
       {list.map((item, index) => (
-        <li key={index}>item-{index + 1}</li>
+        <li key={index} style={{ height: 30, borderBottom: '1px solid #333' }}>
+          item-{index + 1}
+        </li>
       ))}
       <Scrollload loadMoreFun={loadMoreFun} option={option} />
     </ul>
