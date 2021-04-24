@@ -1,0 +1,10 @@
+.exampleWrapper {
+  border: 1px solid #333;
+  height: 400px;
+  width: 200px;
+  overflow-y: auto;
+}
+.exampleWrapper li {
+  height: 30px;
+  border-bottom: 1px solid #333;
+}
