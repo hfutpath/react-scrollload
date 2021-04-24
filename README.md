@@ -67,9 +67,9 @@ _The callback that is executed when the load is triggered._
 
 _When it is time to stop loading data, return false in this function._
 
-如果传入，请使用 useCallback 包裹，以免触发 re-render
+请使用 useCallback 包裹，以免触发 re-render
 
-_If passed in, use the useCallback package to avoid triggering re-render_
+_Please use the useCallback to avoid triggering re-render_
 
 ### option(optional) type: {root:HTMLElement,rootMargin:string,threshold: number} defaultValue： {}
 
@@ -79,7 +79,7 @@ _An optional object which customizes the observe,reference:[MDN](https://develop
 
 如果传入，请使用 useMemo 包裹，以免触发 re-render
 
-_If passed in, use the useMemo package to avoid triggering re-render_
+_If passed in, use the useMemo to avoid triggering re-render_
 
 ### loadingContent(optional) type: ReactNode defaultValue： 'loading...'
 
