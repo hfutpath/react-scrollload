@@ -18,7 +18,7 @@ const ScrollLoad = ({ option, loadMoreFun, loadingContent }) => {
           io.unobserve(spinRef.current);
           Promise.resolve(loadMoreFun())
             .then((stop) => {
-              toggleStop(!!stop);
+              toggleStop(stop === false);
               if (stop) {
                 // 关闭观察器
                 io.disconnect();

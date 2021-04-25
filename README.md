@@ -1,4 +1,4 @@
-# react-scrollload
+# @xiaoluxiaolu/react-scrollload
 
 一个 react 的 function 组件，使用 IntersectionObserver API 实现了滚动加载功能。
 
