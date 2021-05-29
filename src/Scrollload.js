@@ -17,8 +17,9 @@ const ScrollLoad = ({ option, loadMoreFun, loadingContent }) => {
           // 请求数据前停止观察，请求结束时再更具数据结果，看是否要继续监听
           io.unobserve(spinRef.current);
           Promise.resolve(loadMoreFun())
-            .then((stop) => {
-              toggleStop(stop === false);
+            .then((continuation) => {
+              const stop = continuation === false;
+              toggleStop(stop);
               if (stop) {
                 // 关闭观察器
                 io.disconnect();
@@ -30,6 +31,7 @@ const ScrollLoad = ({ option, loadMoreFun, loadingContent }) => {
             .catch(() => {
               // 关闭观察器
               io.disconnect();
+              toggleStop(true);
             });
         }
       },
